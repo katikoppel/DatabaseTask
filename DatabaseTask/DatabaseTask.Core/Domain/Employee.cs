@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
 
 
 namespace DatabaseTask.Core.Domain
@@ -6,9 +8,23 @@ namespace DatabaseTask.Core.Domain
     public class Employee
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string PersonalCode { get; set; }
+
+        public int AddressId { get; set; }
+        public int JobHistoryId { get; set; }
+
+        [ForeignKey("AddressId")]
+        public Address Address { get; set; }
+    }
+
+}
+
 
         /// ESIMENE HINDELINE HARJUTUS
         /// Nõuded ja tegevus:
@@ -55,7 +71,7 @@ namespace DatabaseTask.Core.Domain
         //public ICollection<Children> Childrens { get; set; }
         //public List<Children> Childrens { get; set; }
         //public Children Childrens { get; set; }
-    }
+ 
 
 
     //public enum Gender
@@ -72,5 +88,5 @@ namespace DatabaseTask.Core.Domain
 
     //    public string FirstName { get; set; }
     //}
-}
+
 
